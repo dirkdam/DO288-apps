@@ -1,0 +1,36 @@
+NAME:
+   skopeo copy - Copy an IMAGE-NAME from one location to another
+
+USAGE:
+   skopeo copy [command options] SOURCE-IMAGE DESTINATION-IMAGE
+
+DESCRIPTION:
+   
+
+	Container "IMAGE-NAME" uses a "transport":"details" format.
+
+	Supported transports:
+	containers-storage, dir, docker, docker-archive, docker-daemon, oci, oci-archive, ostree, tarball
+
+	See skopeo(1) section "IMAGE NAMES" for the expected format
+	
+
+OPTIONS:
+   --additional-tag value						additional tags (supports docker-archive)
+   --authfile value							path of the authentication file. Default is ${XDG_RUNTIME_DIR}/containers/auth.json
+   --remove-signatures							Do not copy signatures from SOURCE-IMAGE
+   --sign-by FINGERPRINT						Sign the image using a GPG key with the specified FINGERPRINT
+   --src-creds USERNAME[:PASSWORD], --screds USERNAME[:PASSWORD]	Use USERNAME[:PASSWORD] for accessing the source registry
+   --dest-creds USERNAME[:PASSWORD], --dcreds USERNAME[:PASSWORD]	Use USERNAME[:PASSWORD] for accessing the destination registry
+   --src-cert-dir PATH							use certificates at PATH (*.crt, *.cert, *.key) to connect to the source registry or daemon
+   --src-tls-verify							require HTTPS and verify certificates when talking to the container source registry or daemon (defaults to true)
+   --dest-cert-dir PATH							use certificates at PATH (*.crt, *.cert, *.key) to connect to the destination registry or daemon
+   --dest-tls-verify							require HTTPS and verify certificates when talking to the container destination registry or daemon (defaults to true)
+   --dest-ostree-tmp-dir DIRECTORY					DIRECTORY to use for OSTree temporary files
+   --src-shared-blob-dir DIRECTORY					DIRECTORY to use to fetch retrieved blobs (OCI layout sources only)
+   --dest-shared-blob-dir DIRECTORY					DIRECTORY to use to store retrieved blobs (OCI layout destinations only)
+   --format MANIFEST TYPE, -f MANIFEST TYPE				MANIFEST TYPE (oci, v2s1, or v2s2) to use when saving image to directory using the 'dir:' transport (default is manifest type of source)
+   --dest-compress							Compress tarball image layers when saving to directory using the 'dir' transport. (default is same compression type as source)
+   --src-daemon-host HOST						use docker daemon host at HOST (docker-daemon sources only)
+   --dest-daemon-host HOST						use docker daemon host at HOST (docker-daemon destinations only)
+   
